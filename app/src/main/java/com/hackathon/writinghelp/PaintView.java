@@ -162,7 +162,13 @@ public class PaintView extends View {
                 mPaint.setMaskFilter(mBlur);
         }
 
-        mPaint.setColor(Color.BLACK);
+        if(mainActivity.equiped){
+            mPaint.setColor(Color.BLUE);
+        }
+        else{
+            mPaint.setColor(Color.BLACK);
+        }
+
         mPaint.setStrokeWidth(45f);
 
         //canvas.drawPath(path, mPaint);

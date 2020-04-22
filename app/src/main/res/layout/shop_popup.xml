@@ -64,6 +64,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1"
+        android:textSize="13sp"
         android:text="25" />
 
     </LinearLayout>
@@ -248,7 +249,7 @@
                 android:layout_height="wrap_content"
                 android:text="It's better than black"
                 android:textColor="#FF9800"
-                android:textSize="19sp" />
+                android:textSize="19sp"/>
         </LinearLayout>
 
         <Button
