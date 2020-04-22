@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.e("value", String.valueOf(documentSnapshot.getBoolean("greenPen")));
 
-                        if(documentSnapshot.getBoolean("greenPen") && equiped){
+                        if(documentSnapshot.getBoolean("greenPen") && equiped1){
                             buyTwo.setText("Dequip");
                             owned1 = true;
                         }
@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.e("value", String.valueOf(documentSnapshot.getBoolean("yellowPen")));
 
-                        if(documentSnapshot.getBoolean("yellowPen") && equiped){
+                        if(documentSnapshot.getBoolean("yellowPen") && equiped2){
                             buyThree.setText("Dequip");
                             owned2 = true;
                         }
@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.e("value", String.valueOf(documentSnapshot.getBoolean("orangePen")));
 
-                        if(documentSnapshot.getBoolean("orangePen") && equiped){
+                        if(documentSnapshot.getBoolean("orangePen") && equiped3){
                             buyFour.setText("Dequip");
                             owned3 = true;
                         }
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Log.e("value", String.valueOf(documentSnapshot.getBoolean("redPen")));
 
-                        if(documentSnapshot.getBoolean("redPen") && equiped){
+                        if(documentSnapshot.getBoolean("redPen") && equiped4){
                             buyFive.setText("Dequip");
                             owned4 = true;
                         }
@@ -268,12 +268,33 @@ public class MainActivity extends AppCompatActivity {
                                     equiped3 = false;
                                     equiped4 = false;
                                     equiped5 = false;
+
+                                    if(owned1){
+                                        buyTwo.setText("Equip");
+                                    } else{
+                                        buyTwo.setText("50");
+                                    }
+                                    if(owned2){
+                                        buyThree.setText("Equip");
+                                    } else{
+                                        buyThree.setText("100");
+                                    }
+                                    if(owned3){
+                                        buyFour.setText("Equip");
+                                    } else{
+                                        buyFour.setText("200");
+                                    }
+                                    if(owned4){
+                                        buyFive.setText("Equip");
+                                    } else{
+                                        buyFive.setText("400");
+                                    }
                                 }
 
                                 else {
                                     Log.e("value", String.valueOf(documentSnapshot.getLong("creditNum")));
 
-                                    if (documentSnapshot.getLong("creditNum") >= 50) {
+                                    if (documentSnapshot.getLong("creditNum") >= 25) {
                                         //Log.e("thing","inside");
                                         DocumentReference documentReference = fStore.collection("users").document(userId);
 
@@ -296,6 +317,81 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                 });
+
+                buyTwo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DocumentReference mDocumentReference = fStore.collection("users").document(userId);
+                        mDocumentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                if (owned1 && equiped1) {
+                                    buyTwo.setText("Equip");
+                                    equiped1 = false;
+                                }
+
+                                else if(owned1){
+                                    buyTwo.setText("Dequip");
+
+                                    equiped1 = true;
+
+                                    equiped = false;
+                                    equiped2 = false;
+                                    equiped3 = false;
+                                    equiped4 = false;
+                                    equiped5 = false;
+
+                                    if(owned){
+                                        buyOne.setText("Equip");
+                                    } else{
+                                        buyOne.setText("25");
+                                    }
+                                    if(owned2){
+                                        buyThree.setText("Equip");
+                                    } else{
+                                        buyThree.setText("50");
+                                    }
+                                    if(owned3){
+                                        buyFour.setText("Equip");
+                                    } else{
+                                        buyFour.setText("100");
+                                    }
+                                    if(owned4){
+                                        buyFive.setText("Equip");
+                                    } else{
+                                        buyFive.setText("200");
+                                    }
+                                }
+
+                                else {
+                                    Log.e("value", String.valueOf(documentSnapshot.getLong("creditNum")));
+
+                                    if (documentSnapshot.getLong("creditNum") >= 50) {
+                                        //Log.e("thing","inside");
+                                        DocumentReference documentReference = fStore.collection("users").document(userId);
+
+                                        Map<String, Object> scoreValue = new HashMap<>();
+                                        scoreValue.put("creditNum", ( documentSnapshot.getLong("creditNum") - 50 ));
+                                        scoreValue.put("greenPen", true);
+                                        owned = true;
+                                        buyTwo.setText("Equip");
+
+                                        documentReference.update(scoreValue).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //Nothing
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
+
 
                 dialog.show();
             }
