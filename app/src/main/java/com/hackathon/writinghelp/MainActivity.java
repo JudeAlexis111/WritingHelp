@@ -391,6 +391,225 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                buyThree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DocumentReference mDocumentReference = fStore.collection("users").document(userId);
+                        mDocumentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                if (owned2 && equiped2) {
+                                    buyThree.setText("Equip");
+                                    equiped2 = false;
+                                }
+
+                                else if(owned2){
+                                    buyThree.setText("Dequip");
+
+                                    equiped2 = true;
+
+                                    equiped = false;
+                                    equiped1 = false;
+                                    equiped3 = false;
+                                    equiped4 = false;
+                                    equiped5 = false;
+
+                                    if(owned){
+                                        buyOne.setText("Equip");
+                                    } else{
+                                        buyOne.setText("25");
+                                    }
+                                    if(owned1){
+                                        buyTwo.setText("Equip");
+                                    } else{
+                                        buyTwo.setText("50");
+                                    }
+                                    if(owned3){
+                                        buyFour.setText("Equip");
+                                    } else{
+                                        buyFour.setText("100");
+                                    }
+                                    if(owned4){
+                                        buyFive.setText("Equip");
+                                    } else{
+                                        buyFive.setText("200");
+                                    }
+                                }
+
+                                else {
+                                    Log.e("value", String.valueOf(documentSnapshot.getLong("creditNum")));
+
+                                    if (documentSnapshot.getLong("creditNum") >= 100) {
+                                        //Log.e("thing","inside");
+                                        DocumentReference documentReference = fStore.collection("users").document(userId);
+
+                                        Map<String, Object> scoreValue = new HashMap<>();
+                                        scoreValue.put("creditNum", ( documentSnapshot.getLong("creditNum") - 100 ));
+                                        scoreValue.put("yellowPen", true);
+                                        owned2 = true;
+                                        buyThree.setText("Equip");
+
+                                        documentReference.update(scoreValue).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //Nothing
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
+                buyFour.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DocumentReference mDocumentReference = fStore.collection("users").document(userId);
+                        mDocumentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                if (owned3 && equiped3) {
+                                    buyFour.setText("Equip");
+                                    equiped3 = false;
+                                }
+
+                                else if(owned3){
+                                    buyFour.setText("Dequip");
+
+                                    equiped3 = true;
+
+                                    equiped = false;
+                                    equiped1 = false;
+                                    equiped2 = false;
+                                    equiped4 = false;
+                                    equiped5 = false;
+
+                                    if(owned){
+                                        buyOne.setText("Equip");
+                                    } else{
+                                        buyOne.setText("25");
+                                    }
+                                    if(owned1){
+                                        buyTwo.setText("Equip");
+                                    } else{
+                                        buyTwo.setText("50");
+                                    }
+                                    if(owned2){
+                                        buyThree.setText("Equip");
+                                    } else{
+                                        buyThree.setText("100");
+                                    }
+                                    if(owned4){
+                                        buyFive.setText("Equip");
+                                    } else{
+                                        buyFive.setText("200");
+                                    }
+                                }
+
+                                else {
+                                    Log.e("value", String.valueOf(documentSnapshot.getLong("creditNum")));
+
+                                    if (documentSnapshot.getLong("creditNum") >= 200) {
+                                        //Log.e("thing","inside");
+                                        DocumentReference documentReference = fStore.collection("users").document(userId);
+
+                                        Map<String, Object> scoreValue = new HashMap<>();
+                                        scoreValue.put("creditNum", ( documentSnapshot.getLong("creditNum") - 200 ));
+                                        scoreValue.put("orangePen", true);
+                                        owned3 = true;
+                                        buyFour.setText("Equip");
+
+                                        documentReference.update(scoreValue).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //Nothing
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
+                buyFive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DocumentReference mDocumentReference = fStore.collection("users").document(userId);
+                        mDocumentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                                if (owned4 && equiped4) {
+                                    buyFive.setText("Equip");
+                                    equiped4 = false;
+                                }
+
+                                else if(owned4){
+                                    buyFive.setText("Dequip");
+
+                                    equiped4 = true;
+
+                                    equiped = false;
+                                    equiped1 = false;
+                                    equiped2 = false;
+                                    equiped3 = false;
+                                    equiped5 = false;
+
+                                    if(owned){
+                                        buyOne.setText("Equip");
+                                    } else{
+                                        buyOne.setText("25");
+                                    }
+                                    if(owned1){
+                                        buyTwo.setText("Equip");
+                                    } else{
+                                        buyTwo.setText("50");
+                                    }
+                                    if(owned2){
+                                        buyThree.setText("Equip");
+                                    } else{
+                                        buyThree.setText("100");
+                                    }
+                                    if(owned3){
+                                        buyFour.setText("Equip");
+                                    } else{
+                                        buyFour.setText("200");
+                                    }
+                                }
+
+                                else {
+                                    Log.e("value", String.valueOf(documentSnapshot.getLong("creditNum")));
+
+                                    if (documentSnapshot.getLong("creditNum") >= 400) {
+                                        //Log.e("thing","inside");
+                                        DocumentReference documentReference = fStore.collection("users").document(userId);
+
+                                        Map<String, Object> scoreValue = new HashMap<>();
+                                        scoreValue.put("creditNum", ( documentSnapshot.getLong("creditNum") - 400));
+                                        scoreValue.put("redPen", true);
+                                        owned4 = true;
+                                        buyFive.setText("Equip");
+
+                                        documentReference.update(scoreValue).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //Nothing
+                                            }
+                                        });
+
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
 
 
                 dialog.show();

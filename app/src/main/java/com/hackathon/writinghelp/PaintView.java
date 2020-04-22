@@ -168,6 +168,15 @@ public class PaintView extends View {
         else if(mainActivity.equiped1){
             mPaint.setColor(Color.GREEN);
         }
+        else if(mainActivity.equiped2){
+            mPaint.setColor(Color.parseColor("#f0d530"));
+        }
+        else if(mainActivity.equiped3){
+            mPaint.setColor(Color.parseColor("#ffa501"));
+        }
+        else if(mainActivity.equiped4){
+            mPaint.setColor(Color.RED);
+        }
         else{
             mPaint.setColor(Color.BLACK);
         }

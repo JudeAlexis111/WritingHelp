@@ -76,6 +76,11 @@ public class Register extends AppCompatActivity {
                             Map<String,Object> user = new HashMap<>();
                             user.put("nickName", nickname);
                             user.put("creditNum", 0);
+                            user.put("bluePen", false);
+                            user.put("greenPen", false);
+                            user.put("orangePen", false);
+                            user.put("redPen", false);
+                            user.put("yellowPen", false);
 
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
