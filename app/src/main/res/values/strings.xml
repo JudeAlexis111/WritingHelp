@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WritingHelp</string>
+    <string name="pauseTitle"><u>Paused</u></string>
+</resources>

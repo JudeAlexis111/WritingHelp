@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "824647179379",
+    "firebase_url": "https://writinghelp-610d1.firebaseio.com",
+    "project_id": "writinghelp-610d1",
+    "storage_bucket": "writinghelp-610d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824647179379:android:9a66bd42f7b1d8de6f1e06",
+        "android_client_info": {
+          "package_name": "com.hackathon.writinghelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824647179379-3iovd7kockfukd8lg72u0n4ff7iqcaih.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackathon.writinghelp",
+            "certificate_hash": "9b8766164abb07ad8796389ba1d7a29457992156"
+          }
+        },
+        {
+          "client_id": "824647179379-tmqciv88ctobhlmheoqbdvdpk5rqmlvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7NPof1h87nD_eFUuR-EkmgOwiETQptO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824647179379-tmqciv88ctobhlmheoqbdvdpk5rqmlvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
